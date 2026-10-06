@@ -1,7 +1,18 @@
 \begin{exercise}
-if $(x_\alpha)_{\alpha}$
+If $(x_\alpha)_{\alpha \in A}$ is a collection of numbers $x_\alpha \in [0, +\infty]$ such that $\sum_{\alpha \in A} x_\alpha < \infty$, show that $x_\alpha \neq 0\quad \text{for countable many}\, \alpha\in A$. 
 \end{exercise}
+\textbf{Intuition:}
+\begin{itemize}
+    \item Which also means that the number of positive $x_\alpha$ is countable.
+    \item Divide and conquer: We can split original set (a.k.a scope) to smaller subsets and prove the statement locally to each subset before making out the point. 'make sure that the statement is valid on union operation'
+    \item Countable means a set has finite elements, whereas uncountable set has infinite elements. 
+\end{itemize}
 
 \begin{proof}
-It is an easy proof.
+    Because $\sum_{\alpha \in A} x_\alpha$ is convergent over A, it suffices to show that the sum must be convergent for every subsets of A. (1)\\
+    We split A into (can be overlapping cause that doesnt harm anything) subsets. Let n be a natural integer, $A_n$ be subset of A, which includes indexes such that $x_{\alpha} \geq \frac 1 n \quad \forall \alpha \in A_n$, it is obvious that $A_n$ has no zero elements. We first ensure that $\bigcup_{n \in \mathbb{N}} A_n = A$. That is, for every positive real $x_\alpha$, we can always find large enough $n = \left\lceil \frac{1}{x_\alpha} \right\rceil \in \mathbb{N}$ that $x_\alpha \geq \frac 1 n$, thus $\exists n \in \mathbb{N}$, $x_\alpha \in A_n\quad \forall \alpha \in A, x_\alpha > 0$. As a result, we have \textbf{countably} infinite number of subsets. This extension is important because countability is preserved under union of countable number of sets.\\
+
+    We then prove by contradiction over these sets. Assume that there exists a natural number n such that subset $A_n$ has infinite number of elements $||A_n|| = \infty$. Based on definition of $A_n$, we have $\sum_{\alpha \in A_n} x_\alpha \geq \frac {||A_n||} n = \infty$. This contradicts with (1). Therefore, for every natural number n, $A_n$ has finite number of elements.\\
+
+    Finally, we conclude that the number of positive $x_\alpha$ is countable because $\bigcup_{n \in \mathbb{N}} A_n = A$ and each $A_n$ has finite number of elements.  Though it possible that we can prove the statement by using supremum over n, this conclusion is more concrete. 
 \end{proof}
